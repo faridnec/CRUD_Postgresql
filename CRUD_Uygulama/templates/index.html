@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>VTYS Projesi</title>
+</head>
+
+<body>
+    <center>
+        <h1>Çalışan Listesi</h1>
+        <h3>VTYS Proje 2021</h3>
+        <h6>Muhammad Najmuddin Farid - B201210556</h6>
+        <hr />
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="gorev">
+            <input type="submit" name="Ara" value="Ara" class="btn btn-primary" />
+            <a href="{% url 'Ara' %}" class="btn btn-dark">Listeye Dön</a>
+            <hr />
+            <table border="1">
+                <tr>
+                    <th>Calisan No</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Adres</th>
+                    <th>Cinsiyet</th>
+                    <th>Gorev</th>
+                    <th>Çalışan Tipi</th>
+                </tr>
+                {% for result in Calisan%}
+                <tr>
+                    <td>{{result.calisanNo}}</td>
+                    <td>{{result.ad}}</td>
+                    <td>{{result.soyad}}</td>
+                    <td>{{result.adres}}</td>
+                    <td>{{result.cinsiyet}}</td>
+                    <td>{{result.gorev}}</td>
+                    <td>{{result.calisanTipi}}</td>
+                    <td><a href="Duzelt/{{result.calisanNo}}" class="btn btn-primary">Güncelle</a></td>
+                    <td><a href="Sil/{{result.calisanNo}}"
+                            onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?')"
+                            class="btn btn-primary">Sil</a></td>
+                    <td><a href=""></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+        <a href="{% url 'Ekle' %}" class="btn btn-primary">Ekle</a>
+    </center>
+</body>
+
+</html>

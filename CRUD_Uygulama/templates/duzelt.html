@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>VTYS Projesi</title>
+</head>
+
+<body>
+    <center>
+        <h1>Güncelleme</h1>
+        <h3>VTYS Proje 2021</h3>
+        <h6>Muhammad Najmuddin Farid - B201210556</h6>
+        <hr />
+        <form method="POST" action="/Guncelle/{{Calisan.calisanNo}}">
+            {% csrf_token %}
+            <table border="1">
+                <tr>
+                    <td>Çalısan No</td>
+                    <td><input type="text" name="calisanNo" value="{{Calisan.calisanNo}}" readonly></td>
+                </tr>
+                <tr>
+                    <td>Ad</td>
+                    <td><input type="text" name="ad" value="{{Calisan.ad}}"></td>
+                </tr>
+                <tr>
+                    <td>Soyad</td>
+                    <td><input type="text" name="soyad" value="{{Calisan.soyad}}"></td>
+                </tr>
+                <tr>
+                    <td>Adres</td>
+                    <td><input type="text" name="adres" value="{{Calisan.adres}}"></td>
+                </tr>
+                <tr>
+                    <td>Cinsiyet</td>
+                    <td>{{Calisan.cinsiyet}}</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">değiştir</td>
+                    <td><input type="radio" name="cinsiyet" value="E">Erkek |
+                        <input type="radio" name="cinsiyet" value="K">Kadın
+                    </td>
+                </tr>
+                <tr>
+                    <td>Görev</td>
+                    <td><input type="text" name="gorev" value="{{Calisan.gorev}}"></td>
+                </tr>
+                <tr>
+                    <td>Calısan Tipi</td>
+                    <td>{{Calisan.calisanTipi}}</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">değiştir</td>
+                    <td><input type="radio" name="calisanTipi" value="Gönullu">Gönullu |
+                        <input type="radio" name="calisanTipi" value="Sözleşmeli">Sözleşmeli
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Güncelle" class="btn btn-primary"></td>
+                    <td>{% if messages %}
+                        {% for mess in messages%}
+                        <b style="color: green">{{mess}}</b>
+                        {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <a href="{% url 'Ara' %}" class="btn btn-dark">Listeye Dön</a>
+    </center>
+</body>
+
+</html>
