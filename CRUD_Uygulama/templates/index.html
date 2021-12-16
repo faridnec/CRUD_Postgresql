@@ -15,13 +15,13 @@
         <h1>Çalışan Listesi</h1>
         <h3>VTYS Proje 2021</h3>
         <h6>Muhammad Najmuddin Farid - B201210556</h6>
-        <hr />
         <form method="POST">
             {% csrf_token %}
             <input type="text" name="gorev">
             <input type="submit" name="Ara" value="Ara" class="btn btn-primary" />
             <a href="{% url 'Ara' %}" class="btn btn-dark">Listeye Dön</a>
             <hr />
+            <a href="{% url 'Ekle' %}" class="btn btn-primary" style="margin-bottom: 20px;">Ekle</a>
             <table border="1">
                 <tr>
                     <th>Calisan No</th>
@@ -50,7 +50,6 @@
                 {% endfor %}
             </table>
         </form>
-        <a href="{% url 'Ekle' %}" class="btn btn-primary">Ekle</a>
     </center>
 </body>
 
