@@ -48,7 +48,7 @@ def Guncelle(request, calisanNo):
 
 
 def Sil(request, calisanNo):
-    delcalisan = Calisan.objects.get(calsianNo=calisanNo)
+    delcalisan = Calisan.objects.get(calisanNo=calisanNo)
     delcalisan.delete()
     showdata = Calisan.objects.all()
     return render(request, "index.html", {"Calisan": showdata})
